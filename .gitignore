@@ -1,0 +1,10 @@
+__pycache__/
+__pycache__
+results/
+checkpoints/
+datasets/
+wandb/
+*_model/
+neural_object_fitting/
+pretrained_models/
+record
