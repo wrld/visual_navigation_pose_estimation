@@ -4,7 +4,9 @@ import torchvision.models.vgg as models
 from torchvision import transforms
 import numpy as np
 from scipy.linalg import logm, norm
-
+import matplotlib.pyplot as plt
+import os
+degree_thres_list = range(0, 61, 1)
 def is_between(a, x, b):
         return min(a, b) <= x <= max(a, b)
     
@@ -13,6 +15,29 @@ def rotationMatrixToEulerAngles(R) :
         y = -math.atan2(R[2, 0], R[2, 2])
         z = -math.atan2(R[0, 1], R[1, 1])
         return np.array([y, x, z])
+def calc_ap(loss):
+    
+    acc = np.zeros_like(degree_thres_list)
+    for j in range(len(loss)):
+            for k in range(len(degree_thres_list)):
+                    if int(loss[j]) <= degree_thres_list[k]:
+                            acc[k] += 1.0
+    acc = acc / len(loss) * 100.0
+    return acc
+
+def show_AP(angle_loss, name, path):
+    
+    acc_il_step_1 = calc_ap(angle_loss)
+    plt.figure(figsize=(5,5))
+    plt.plot(degree_thres_list,
+            acc_il_step_1,
+            linestyle="-",
+            color=(0, 0, 1, 0.2),
+            # marker="o",
+            alpha=0.5,
+            linewidth=3,
+            label=name)
+    plt.savefig(os.path.join(path, "AP_0_60_degree.png"))
     
 def load_image(path, size = 128):
     transform_list = []

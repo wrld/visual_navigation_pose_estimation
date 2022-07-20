@@ -1922,20 +1922,13 @@ def compute_degree_cm_mAP(npyname, final_results, synset_names, log_dir, categor
     '''
     index = synset_names.index(category) 
     print(category, index)
-    for i in range(len(synset_names)):
-        index = i
-        print("category: ", synset_names[index])
-        print('10 degree : {:.1f}'.format(pose_aps[index, degree_thres_list.index(10),-1] * 100))
-        print('30 degree : {:.1f}'.format(pose_aps[index, degree_thres_list.index(30),-1] * 100))
-        print('60 degree {:.1f}'.format(pose_aps[index, degree_thres_list.index(60),-1] * 100))
-        print('5  : {:.1f}'.format(pose_aps[index, -1,shift_thres_list.index(5)] * 100))
-        print('10  : {:.1f}'.format(pose_aps[index, -1,shift_thres_list.index(10)] * 100))
-        print('15  {:.1f}'.format(pose_aps[index, -1,shift_thres_list.index(15)] * 100))
-    np.save(os.path.join('./results/' + npyname, 'real.npy'), np.array(pose_aps))
-    # print(pose_aps[-1, -1, :])
-    # print('laptop 10 degree : {:.1f}'.format(pose_aps[5, degree_thres_list.index(10),shift_thres_list.index(10000)] * 100))
-    # print('laptop 60 degree {:.1f}'.format(pose_aps[5, degree_thres_list.index(60),shift_thres_list.index(10000)] * 100))
-
+    print("category: ", synset_names[index])
+    print('10 degree : {:.1f}'.format(pose_aps[index, degree_thres_list.index(10),-1] * 100))
+    print('30 degree : {:.1f}'.format(pose_aps[index, degree_thres_list.index(30),-1] * 100))
+    print('60 degree {:.1f}'.format(pose_aps[index, degree_thres_list.index(60),-1] * 100))
+    print('5  : {:.1f}'.format(pose_aps[index, -1,shift_thres_list.index(5)] * 100))
+    print('10  : {:.1f}'.format(pose_aps[index, -1,shift_thres_list.index(10)] * 100))
+    print('15  {:.1f}'.format(pose_aps[index, -1,shift_thres_list.index(15)] * 100))
     return iou_3d_aps, pose_aps
 
 

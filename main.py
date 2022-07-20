@@ -58,7 +58,7 @@ def main(args, parser):
 
             if avg_loss < min_test:
                 min_test = avg_loss
-                path = os.path.join(save_path, "best_model")
+                path = os.path.join(save_path, "best_model.pt")
                 torch.save(agent.policy.state_dict(), path)
                 print("save best model on ", i_episode)
 

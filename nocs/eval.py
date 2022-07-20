@@ -11,8 +11,8 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--num_eval', type=int, default=-1)
 parser.add_argument('--result_path', type=str, default='./results/')
-parser.add_argument('--name', type=str, default='fit')
-parser.add_argument('--category', type=str, default='bowl')
+parser.add_argument('--name', type=str, default='pose_estimation')
+parser.add_argument('--dataset', type=str, default='bowl')
 
 
 args = parser.parse_args()
@@ -93,7 +93,7 @@ if __name__ == '__main__':
         else:
             assert False
 
-    aps = utils.compute_degree_cm_mAP(args.name, final_results, synset_names, args.result_path, args.category,
+    aps = utils.compute_degree_cm_mAP(args.name, final_results, synset_names, args.result_path, args.dataset,
                                                                 degree_thresholds = range(0, 61, 1),#range(0, 61, 1),
                                                                 shift_thresholds= np.linspace(0, 1, 31)*15, #np.linspace(0, 1, 31)*15,
                                                                 iou_3d_thresholds=np.linspace(0, 1, 101),

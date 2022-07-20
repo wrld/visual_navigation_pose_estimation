@@ -13,7 +13,7 @@ import torch.nn.functional as F
 from scipy.spatial.transform import Rotation as scipy_rot
 import wandb
 from PIL import Image
-from torchvision import transforms
+from utils.utils import show_AP
 def train_one_epoch(args, agent, env, i_episode):
     
     state = env.reset(batch_size=args.batch_size)
@@ -71,6 +71,7 @@ def eval_one_epoch(args, agent, env, i_episode=0, episodes=10):
     print("===========Test Results=============")
     print("Rotation error: {} degree, \nTranslation error: {} cm".format(eval_loss['rot_distance'].mean(), eval_loss['trans_distance'].mean()))
     img.save(os.path.join(args.save_path, "eval_" + str(episodes) + ".png"))
+    show_AP(np.array(eval_loss['rot_distance'].detach().cpu()), args.name, args.save_path)
     if args.log == True:
         eval_log = {
                 "test/" + k: (eval_loss[k]).mean()

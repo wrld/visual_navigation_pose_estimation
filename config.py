@@ -6,18 +6,16 @@ def load_options():
     parser = argparse.ArgumentParser(
         description='visual navigation pose estimation')
     # basic parameters
-    # subparsers = parser.add_subparsers()
-    # parser_main = subparsers.add_parser('main', help='nocs help')
     basic_args = parser.add_argument_group('basic')
     
     basic_args.add_argument('--seed', type=int, default=123456, metavar='N',
                         help='random seed (default: 123456)')
-    basic_args.add_argument('--batch_size', type=int, default=20, metavar='N',
-                        help='batch size (default: 256)')
-    basic_args.add_argument('--episode_nums', type=int, default=100000, metavar='N',
-                        help='maximum number of episodes')
+    basic_args.add_argument('--batch_size', type=int, default=50, metavar='N',
+                        help='batch size (default: 50)')
+    basic_args.add_argument('--episode_nums', type=int, default=50000, metavar='N',
+                        help='maximum episodes number')
     basic_args.add_argument('--cuda', type=bool, default=True,
-                        help='run on CUDA (default: False)')
+                        help='run on CUDA ')
     basic_args.add_argument('--save_folder', type=str, default="./results/",
                         help='folder to save files and logs')
     basic_args.add_argument('--name', type=str, default="pose_estimation",
@@ -26,9 +24,9 @@ def load_options():
                         help='hidden size (default: 256)')
     basic_args.add_argument('--pretrain', type=str, default=None,
                         help='pretrain model path')
-    basic_args.add_argument('--save_interval', type=int, default=500,
+    basic_args.add_argument('--save_interval', type=int, default=1000,
                         help='model save interval')
-    basic_args.add_argument('--log', type=bool, default=True,
+    basic_args.add_argument('--log', type=bool, default=False,
                         help='wandb log')
     basic_args.add_argument('--log_interval', type=int, default=30,
                         help='wandb logging interval')
@@ -44,9 +42,9 @@ def load_options():
     policy_args.add_argument('--gamma', type=float, default=0.8, metavar='G',
                         help='discount factor for reward (default: 0.99)')
     policy_args.add_argument('--tau', type=float, default=0.005, metavar='G',
-                        help='target smoothing coefficiet(τ) (default: 0.005)')
+                        help='target smoothing coefficiet(τ)')
     policy_args.add_argument('--lr', type=float, default=0.00003, metavar='G',
-                        help='learning rate (default: 0.0003)')
+                        help='learning rate')
     policy_args.add_argument('--alpha', type=float, default=0.2, metavar='G',
                         help='Temperature parameter α determines the relative importance of the entropy\
                                 term against the reward (default: 0.2)')
