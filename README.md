@@ -1,7 +1,7 @@
 # A Visual Navigation Perspective for Category-Level Object Pose Estimation
 
 This is the official repository for the paper ["A Visual Navigation Perspective for Category-Level Object Pose Estimation"](https://arxiv.org/abs/2203.13572). 
-
+![](https://github.com/wrld/visual_navigation_pose_estimation/images/teaser_video.gif)
 ## System Environments:
 
 You can use anaconda and create an anaconda environment:
