@@ -1,6 +1,6 @@
-# A Visual Navigation Perspective for Category-Level Object Pose Estimation
+# [ECCV'22] A Visual Navigation Perspective for Category-Level Object Pose Estimation
 
-This is the official repository for the paper ["A Visual Navigation Perspective for Category-Level Object Pose Estimation"](https://arxiv.org/abs/2203.13572). 
+This is the official repository for the ECCV 2022 paper ["A Visual Navigation Perspective for Category-Level Object Pose Estimation"](https://arxiv.org/abs/2203.13572). 
 ![](https://github.com/wrld/visual_navigation_pose_estimation/blob/main/images/teaser_video.gif)
 ## System Environments:
 
